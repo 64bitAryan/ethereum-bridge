@@ -1,7 +1,7 @@
 const { ethers } = require("hardhat");
-const di = require("../di/mainModule");
-const swapAbi = require("../artifacts/contracts/swap.sol/TokenSwap.json");
-const { toWei } = require("../utils/converter");
+const di = require("../../di/mainModule");
+const swapAbi = require("../../artifacts/contracts/swap.sol/TokenSwap.json");
+const { toWei } = require("../../utils/converter");
 
 require("dotenv").config();
 
@@ -37,7 +37,7 @@ const burnEthOnSepoliaAndgetBtcOnPolygon = async (_to, _amount) => {
   const result = await sepolia_swap
     .connect(sepoliaUserWallet)
     .burnEth(process.env.user_address, toWei(_amount));
-  console.log(`Burn hash: ${result.hash}`);
+  console.log(`Burn on Sepolia\nHash:${result.hash}`);
   sepolia_swap.on("Swap", async (from, to, amount, nonce, timestamp, state) => {
     console.log("Swap called....");
     sepolia_swap.on("LogPriceUpdated", async (price) => {
@@ -61,7 +61,7 @@ const burnBtcOnSepoliaAndgetEthOnPolygon = async (_to, _amount) => {
   const result = await sepolia_swap
     .connect(sepoliaUserWallet)
     .burnBtc(process.env.user_address, toWei(_amount));
-  console.log(`Burn Hash: ${result.hash}`);
+  console.log(`Burn on Sepolia\nHash: ${result.hash}`);
   sepolia_swap.on("Swap", async (from, to, amount, nonce, timestamp, state) => {
     console.log("Swap called....");
     sepolia_swap.on("LogPriceUpdated", async (price) => {
@@ -76,7 +76,7 @@ const mintEthOnPolygon = async (_from, _to, _amount, _price, _nonce) => {
   const result = await polygon_swap
     .connect(adminPolygonWallet)
     .mintEth(_from, _to, _amount, toWei(_price), 1, signature);
-  console.log("Minted on hash: " + result.hash);
+  console.log("Minted on Polygon\nHash: " + result.hash);
 };
 
 const main = async () => {

@@ -122,7 +122,7 @@ const getNames = async () => {
 };
 
 const main = async () => {
-  await getNames();
+  // await getNames();
   /*_____mint aount for user_______/
   const amount = toWei(100);
   await mintEthOnSepolia(amount);
@@ -130,16 +130,18 @@ const main = async () => {
   await mintBtcOnSepolia(amount);
   await mintBtcOnPolygon(amount);
   /*______________________________*/
-  /*_______________Log balance_______________ */
+  /*_______________Log balance_______________ /
   await getBalanceBtcPolygon(user);
   await getBalanceEthPolygon(user);
   await getBalanceBtcSepolia(user);
   await getBalanceEthSepolia(user);
   /*__________________________________________*/
+
   /*_______________add swap address as validator____________*/
-  // await addValidatorOnPolygonBtc(process.env.pol_swap);
-  // await addValidatorOnPolygonEth(process.env.pol_swap);
-  // await addValidatorOnSepoliBtc(process.env.sep_swap);
-  // await addValidatorOnSepoliEth(process.env.sep_swap);
+  // await addValidatorOnPolygonBtc("0x4E3Ca48820bd4e039566E2Aa5Fe613687F4e981c");
+  // await addValidatorOnPolygonEth("0x4E3Ca48820bd4e039566E2Aa5Fe613687F4e981c");
+  await addValidatorOnSepoliBtc("0x79b3AaCbDCb8e513Bb100707efBeA1062bc5b248");
+  await addValidatorOnSepoliEth("0x79b3AaCbDCb8e513Bb100707efBeA1062bc5b248");
+  /*_______________add swap address as validator____________*/
 };
 main();

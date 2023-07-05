@@ -1,5 +1,5 @@
 const hre = require("hardhat");
-const { toWei } = require("../utils/converter");
+const { toWei } = require("../../utils/converter");
 
 async function main() {
   const FirstToken = await hre.ethers.getContractFactory("firstToken");
